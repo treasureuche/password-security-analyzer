@@ -71,3 +71,28 @@ Treasure Uchechukwu Ihedioha
 Information Technology Undergraduate
 
 Interests: Cybersecurity | Cloud Engineering | Artificial Intelligence | Software Development
+
+## Automated Testing
+
+This project includes automated unit tests using Python's built-in `unittest` framework.
+
+The tests verify:
+- Weak password detection
+- Common password detection
+- Medium-strength password detection
+- Strong password detection
+
+### Run the Tests
+
+```bash
+py -m unittest test_password_utils.py -v
+```
+
+All four tests passed successfully during local testing.
+
+## Project Structure
+
+- `password-analyzer.py` - Main application
+- `password_utils.py` - Password strength analysis function
+- `test_password_utils.py` - Automated unit tests
+- `README.md` - Project documentation
