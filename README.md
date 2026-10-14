@@ -1,4 +1,6 @@
 
+![Python Tests](https://github.com/treasureuche/password-security-analyzer/actions/workflows/main.yml/badge.svg)
+
 # 🔐 Password Security Analyzer
 
 A beginner-friendly cybersecurity project built with Python that evaluates password strength and provides personalized security recommendations.
