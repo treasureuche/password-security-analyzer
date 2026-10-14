@@ -1,4 +1,5 @@
-import getpass
+import getpass 
+from password_utils import check_password_strength
 print("PASSWORD SECURITY ANALYZER")
 print("----------------------")
 
@@ -14,26 +15,10 @@ has_number = any(char.isdigit() for char in password)
 has_special = any(not char.isalnum() for char in password)
 has_length = len(password) >= 12
 
-#calculate password strength score
-score = 0 
+# Analyze password using our tested function
+score, strength = check_password_strength(password)
 
-if has_uppercase:
-    score+= 1
-if has_lowercase:
-    score+= 1 
-if has_number:
-    score+= 1 
-if has_special: 
-    score+= 1
-if has_length:
-    score+= 1
-
-    print("\nPASSWORD SECURITY RESULTS")
-    print("----------------------")
-    print("security score:", score, "/5")
-
-    
-# Check for common passwords
+# Check for common and predictable passwords
 common_passwords = [
     "password",
     "password123",
@@ -47,15 +32,12 @@ common_passwords = [
 is_common = password.lower() in common_passwords
 has_low_variety = len(set(password)) <= 3
 
-# Determine password strength
-if is_common or has_low_variety:
-    print("Password Strength: WEAK")
-elif score <= 2:
-    print("Password Strength: WEAK")
-elif score <= 4:
-    print("Password Strength: MEDIUM")
-else:
-    print("Password Strength: STRONG")
+# Display security results
+print("\nPASSWORD SECURITY RESULTS")
+print("-------------------------")
+print("Security Score:", score, "/5")
+print("Password Strength:", strength)
+
 
 #Give password improvement suggestions 
 
@@ -82,5 +64,4 @@ if is_common:
 
 if has_low_variety:
     print("WARNING: Your password has very little character variety!")
-
 
