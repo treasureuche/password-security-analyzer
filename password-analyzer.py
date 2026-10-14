@@ -32,12 +32,30 @@ if has_length:
     print("----------------------")
     print("security score:", score, "/5")
 
-    if score <=2:
-        print("password strength: WEAK")
-    elif score <=4: 
-        print("password strength: MEDIUM")
-    else:
-        print("password strength: STRONG")    
+    
+# Check for common passwords
+common_passwords = [
+    "password",
+    "password123",
+    "123456",
+    "12345678",
+    "qwerty",
+    "admin123",
+    "welcome123"
+]
+
+is_common = password.lower() in common_passwords
+has_low_variety = len(set(password)) <= 3
+
+# Determine password strength
+if is_common or has_low_variety:
+    print("Password Strength: WEAK")
+elif score <= 2:
+    print("Password Strength: WEAK")
+elif score <= 4:
+    print("Password Strength: MEDIUM")
+else:
+    print("Password Strength: STRONG")
 
 #Give password improvement suggestions 
 
@@ -54,6 +72,15 @@ if not has_number:
     print("add a number (0-9).")
 if not has_special:
     print("add a special character (e.g., !, @, #, $, %, ^, &, *).")
-if score == 5:
+if score == 5 and not is_common and not has_low_variety:
     print("all basic requirements passed!")
-    print("remember to use a uniqure, unpredictable password.")                
+    print("remember to use a uniqure, unpredictable password.")      
+
+ 
+if is_common:
+    print("WARNING: This is a commonly used password!")
+
+if has_low_variety:
+    print("WARNING: Your password has very little character variety!")
+
+
